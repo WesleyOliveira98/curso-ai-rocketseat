@@ -137,6 +137,8 @@ with st.sidebar:
 if submit_button:
     if not topic:
         st.error("Please fill the ticket field")
+    elif st.secrets["OPEN_API_KEY"] == "OPEN_API_KEY":
+        st.error("Open API key is not available")
     else:
         results = crew.kickoff(inputs={"ticket": topic})
         st.subheader("Results of research:")
